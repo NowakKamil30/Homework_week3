@@ -9,11 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import pl.akademiaspring.homework_week_3.models.Car;
 import pl.akademiaspring.homework_week_3.services.CarService;
 
-import javax.annotation.Resources;
 import java.util.HashMap;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping(value = "/cars", produces = {
