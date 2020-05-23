@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>Change car</h1>
+    <div class="example-full-width">
+        <label for="mark">Mark</label>
+        <input 
+        (change)="onChangeMark($event)"
+        id="mark" 
+        placeholder="Peugote"
+        class="input"
+        [value]="mark" >
+    </div>
+    <div class="example-full-width">
+        <label for="model">Model</label>
+        <input 
+        (change)="onChangeModel($event)"
+        type="text"
+        id="model" 
+        placeholder="Peugote"
+        class="input"
+        [value]="model" >
+    </div>
+    <div class="example-full-width">
+        <label for="color">Color</label>
+        <input 
+        id="color" 
+        (change)="onChangeColor($event)"
+        placeholder="Peugote"
+        class="input"
+        [value]="color" >
+    </div>
+    <button 
+    mat-raised-button 
+    color="primary" 
+    type="button"
+    (click)="onSubmit()">
+    Wyślij
+    </button>

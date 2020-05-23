@@ -1,0 +1,84 @@
+<app-search-input (CarIdEmitter)="searchById($event)"></app-search-input>
+<div class="example-container mat-elevation-z8">
+    <div class="example-loading-shade"
+         *ngIf="isLoading || isError">
+      <mat-spinner *ngIf="isLoading"></mat-spinner>
+      <div class="example-rate-limit-reached" *ngIf="isError">
+        error
+      </div>
+    </div>
+  
+    <div class="example-table-container">
+  
+        <mat-table [dataSource]="cars" *ngIf="!isLoading && !isError">
+            <!-- User name Definition -->
+            <ng-container matColumnDef="id">
+              <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+              <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+            </ng-container>
+          
+            <!-- Age Definition -->
+            <ng-container matColumnDef="model">
+              <mat-header-cell *matHeaderCellDef> Mark </mat-header-cell>
+              <mat-cell *matCellDef="let row"> {{row.mark}} </mat-cell>
+            </ng-container>
+          
+            <!-- Title Definition -->
+            <ng-container matColumnDef="mark">
+              <mat-header-cell *matHeaderCellDef> Model </mat-header-cell>
+              <mat-cell *matCellDef="let row"> {{row.model}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="color">
+                <mat-header-cell *matHeaderCellDef> Color </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.color}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="delete">
+                <mat-header-cell *matHeaderCellDef>
+                    <mat-icon style="padding-left: 20px;">
+                        delete_forever
+                    </mat-icon>
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    <button 
+                    mat-button 
+                    color="warn"
+                    *ngIf="!isLoadingDelete && !isErrorDelete"
+                    (click)="deleteCar(row.id)">
+                        <mat-icon>remove</mat-icon>
+                    </button>
+                    <mat-spinner 
+                    *ngIf="isLoadingDelete"
+                    diameter="40"></mat-spinner>
+                    <div 
+                    class="example-rate-limit-reached" 
+                    *ngIf="isErrorDelete">
+                        error
+                    </div>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="modify">
+                <mat-header-cell *matHeaderCellDef>
+                    <mat-icon style="padding-left: 20px;">
+                        sync_alt
+                    </mat-icon>
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    <button 
+                    mat-button 
+                    color="primary"
+                    *ngIf="!isLoadingDelete && !isErrorDelete"
+                    (click)="openDialog(row)">
+                        <mat-icon>launch</mat-icon>
+                    </button>
+                </mat-cell>
+            </ng-container>
+          
+            <!-- Header and Row Declarations -->
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+          </mat-table>
+    </div>
+  </div>

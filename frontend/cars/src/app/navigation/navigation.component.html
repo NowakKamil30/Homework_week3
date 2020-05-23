@@ -1,0 +1,13 @@
+<mat-toolbar>
+    <span>My Application</span>
+    <mat-menu #appMenu="matMenu">
+        <button mat-menu-item (click)="goToPage(['/'])">Home</button>
+        <button mat-menu-item (click)="goToPage(['/car-page'])">Cars</button>
+        <button mat-menu-item (click)="openDialog()">Add Car</button>
+      </mat-menu>
+      <button mat-icon-button [matMenuTriggerFor]="appMenu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+</mat-toolbar>
+
+  
